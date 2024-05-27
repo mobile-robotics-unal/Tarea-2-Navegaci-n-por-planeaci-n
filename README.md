@@ -1,1 +1,1 @@
-# Tarea-2-Navegaci-n-por-planeaci-n
+# Tarea 2 - *Navegación por planeación*
