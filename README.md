@@ -26,12 +26,12 @@ El robot asignado para esta tarea es el *Robotnik Summit XL*. Este robot tiene m
 - Alto 720 mm
 
 
-<div style="text-align: center">
+<div  align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/161974694/261a02a0-10d5-4597-ab1b-78cae4a81da4"
     alt="RB-SUMMIT-datasheets"
     width="60%" />
-    <p> Figure 1: medidas RB Summit </p>
+    <p> <b>Figure 1: </b> medidas RB Summit </p>
 </div> 
 
 Se realiza el modelo  cinemático de robot.
@@ -57,23 +57,23 @@ show(myMap)
 
 Al ejecutar este código junto con la sección anterior de código, se obtiene el mapa preliminar.
 
-<div style="text-align: center">
+<div  align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/161974694/e9b4a38a-4fc9-4b26-968c-e792b2caa9ae"
     alt="Mapa base"
     width="60%" />
-    <p> Figure 2: Mapa base </p>
+    <p> <b>Figure 2: </b>Mapa base </p>
 </div> 
 
 Luego, de acuerdo a las dimensiones del robot, agranda cada posición con un 1 lógico (ocupada) por el radio indicado en metros...
 
 
 
-<div style="text-align: center">
+<div  align="center"">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/161974694/1729c636-5331-418a-8a02-57af4ae5b0a6"
     width="60%" />
-    <p> Figure 3: Mapa inflado </p>
+    <p> <b>Figure 3:</b> Mapa inflado </p>
 </div> 
 
 ### Alternativa
@@ -103,11 +103,11 @@ costmap.CollisionChecker = ccConfig;
 
 Para establecer los parámetros de FrontOverhang y RearOverhang se realiza la resta entre el largo y el wheelBase  diviendo entre 2 dando como resultado 131 mm. 
 
-<div style="text-align: center">
+<div align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/4ed9155d-64a8-4f1a-aed3-cc2cf0e76fed"
     width="60%" />
-    <p> Figure 4: parámetros vehicleDim </p>
+    <p> <b>Figure 4</b>: parámetros vehicleDim </p>
 </div>
 
 Podemos usar el siguiente comando para visualizar el vehículo y el mapa de colisión inflado.
@@ -124,11 +124,11 @@ title('Collision Checking with One Circle')
 
 ```
 
-<div style="text-align: center">
+<div  align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/6c23dabc-4afa-42f3-b0d8-b164b6435b4e"
     width="90%" />
-    <p> Figure 5: Mapa inflado </p>
+    <p> <b> Figure 5: </b> Mapa inflado </p>
 </div>
 
 ## Planeación PRM
@@ -184,12 +184,12 @@ Por otro lado el método 'Reeds-Shepp' permite 5 tipos de movimientos:
 
 Se obtine como resultado una trayectoria que se muestra en la siguiente imagen. Se evidencia también todos los demás trayectos recorridos por árbol de búsqueda que generó la trayectoria.
 
-<div style="text-align: center">
+<div align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/dfce2fe3-9b0c-4aae-83ba-59ca5b6d9065"
     alt="RRT algorithm"
     width="60%" />
-    <p>Figure 6:   </p>
+    <p><b>Figure 6:</b> Solucción RRT   </p>
 </div>  
 
 ## Simulasión en *MATLAB* y *CoppeliaSim*
