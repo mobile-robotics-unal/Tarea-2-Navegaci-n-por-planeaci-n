@@ -206,7 +206,7 @@ Se obtine como resultado una trayectoria que se muestra en la siguiente imagen. 
     <p><b>Figure 6:</b> Solucción RRT   </p>
 </div>  
 
-## Simulasión en *MATLAB* y *CoppeliaSim*
+## Simulación en *MATLAB* y *CoppeliaSim*
 
 ## Referencias
 1. [documentación inflationCollisionChecker](https://la.mathworks.com/help/driving/ref/driving.costmap.inflationcollisionchecker.html)
