@@ -28,66 +28,72 @@ El robot asignado para esta tarea es el *Robotnik Summit XL*. Este robot tiene m
 * Largo $731\ mm$
 * Alto $720\ mm$
 
-<figure align="center">
+<div align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/161974694/261a02a0-10d5-4597-ab1b-78cae4a81da4"
     alt="RB-SUMMIT-datasheets"
     width="60%" />
-    <figcaption> <b>Figura 1:</b> Medidas RB Summit </figcaption>
-</figure>
+    <p> <b>Figura 1:</b> Medidas RB Summit </p>
+</div>
 
-Se realiza el modelo  cinemático de robot.
+Se realiza el modelo cinemático de robot.
 
 Posición:
+
 $$
 \begin{align*}
-v &= \frac{{v_r + v_l}}{2} \\
-w &= \frac{{v_r - v_l}}{l} \\
+    v &= \frac{{v_r + v_l}}{2} \\
+    w &= \frac{{v_r - v_l}}{l}
 \end{align*}
 $$
 
 $$
-\begin{bmatrix}
-v \\
-w
-\end{bmatrix}
-=
-\begin{bmatrix}
-\frac{1}{2} & \frac{1}{2} \\
--\frac{1}{l} & \frac{1}{l}
-\end{bmatrix}
-\begin{bmatrix}
-v_l \\
-v_r
-\end{bmatrix}
+\begin{align*}
+    \begin{bmatrix}
+        v \\
+        w
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \frac{1}{2} & \frac{1}{2} \\
+        -\frac{1}{l} & \frac{1}{l}
+    \end{bmatrix}
+    \begin{bmatrix}
+        v_l \\
+        v_r
+    \end{bmatrix}
+\end{align*}
 $$
 
 Velocidad:
+
 $$
 \begin{align*}
-\dot{\theta} &= w \cdot dt \\
-\dot{x} &= v \cdot \cos(\dot{\theta}) \cdot dt \\
-\dot{y} &= v \cdot \sin(\dot{\theta}) \cdot dt \\
+    \dot{\theta} &= w \cdot dt \\
+    \dot{x} &= v \cdot \cos(\dot{\theta}) \cdot dt \\
+    \dot{y} &= v \cdot \sin(\dot{\theta}) \cdot dt \\
 \end{align*}
 $$
 
 $$
-\begin{bmatrix}
-\dot{x} \\
-\dot{y} \\
-\dot{\theta}
-\end{bmatrix}
-=
-\begin{bmatrix}
-\cos(\dot{\theta}) & 0 \\
-\sin(\dot{\theta}) & 0 \\
-0 & 1
-\end{bmatrix}
-\begin{bmatrix}
-v \\
-w
-\end{bmatrix}
-\cdot dt
+\begin{align*}
+    \begin{bmatrix}
+        \dot{x} \\
+        \dot{y} \\
+        \dot{\theta}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos(\dot{\theta}) & 0 \\
+        \sin(\dot{\theta}) & 0 \\
+        0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        v \\
+        w
+    \end{bmatrix}
+    \cdot dt
+\end{align*}
 $$
 <!--
 construir modelo cinemático del robot en matlab
@@ -112,29 +118,29 @@ show(myMap)
 
 Al ejecutar este código junto con la sección anterior de código, se obtiene el mapa base.
 
-<figure align="center">
+<div align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/161974694/e9b4a38a-4fc9-4b26-968c-e792b2caa9ae"
     alt="Mapa base"
     width="60%" />
-    <figcaption> <b>Figura 2: </b>Mapa base </figcaption>
-</figure>
+    <p><b>Figura 2: </b>Mapa base </p>
+</div>
 
 Sabiendo las dimensiones del robot se encuentra el radio mínimo que lo encierra siendo este la diagonal del robot, Con este radio se realiza la inflación del mapa obteniendo el siguiente mapa inflado:
 
-<figure align="center"">
+<div align="center"">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/9c436187-75d1-43bc-9a89-71e01e055841"
     width="60%" />
-    <figcaption><b>Figura 3:</b> Radio de inflación</figcaption>
-</figure>
+    <p><b>Figura 3:</b> Radio de inflación</p>
+</div>
 
-<figure align="center"">
+<div align="center"">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/161974694/1729c636-5331-418a-8a02-57af4ae5b0a6"
     width="60%" />
-    <figcaption><b>Figura 4:</b> Mapa inflado </figcaption>
-</figure>
+    <p><b>Figura 4:</b> Mapa inflado </p>
+</div>
 
 ### Alternativa
 
@@ -160,12 +166,12 @@ costmap.CollisionChecker = ccConfig;
 
 Para establecer los parámetros de FrontOverhang y RearOverhang se realiza la resta entre el largo y el wheelBase  dividiendo entre 2 dando como resultado $131\ mm$.
 
-<figure align="center">
+<div align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/4ed9155d-64a8-4f1a-aed3-cc2cf0e76fed"
     width="60%" />
-    <figcaption><b>Figura 5</b>: Parámetros vehicleDim</figcaption>
-</figure>
+    <p><b>Figura 5</b>: Parámetros vehicleDim</p>
+</div>
 
 Podemos usar el siguiente comando para visualizar el vehículo y el mapa de colisión inflado.
 
@@ -179,12 +185,12 @@ plot(costmap)
 title('Collision Checking with One Circle')
 ```
 
-<figure align="center">
+<div align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/6c23dabc-4afa-42f3-b0d8-b164b6435b4e"
     width="90%" />
-    <figcaption><b>Figura 6: </b> Mapa inflado</figcaption>
-</figure>
+    <p><b>Figura 6: </b> Mapa inflado</p>
+</div>
 
 Para la planeación de trayectoria se define una posición inicial en la esquina inferior derecha (1.2, 0.5) y posición final (17,16).
 
@@ -218,12 +224,12 @@ figure
 PRM.show()
 ```
 
-<figure align="center">
+<div align="center">
   <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/e6110bf5-ad81-4b20-a13c-b6a41b6c9c8c"
     width="60%" />
-  <figcaption><b> Figura 7: </b> Solución algoritmo PRM</figcaption>
-</figure>
+  <p><b> Figura 7: </b> Solución algoritmo PRM</p>
+</div>
 
 <!---
 función de costo y valor de ruta optima
@@ -270,13 +276,13 @@ Por otro lado el método `Reeds-Shepp` permite 5 tipos de movimientos:
 
 Se obtiene como resultado una trayectoria que se muestra en la siguiente imagen. Se evidencia también todos los demás trayectos recorridos por árbol de búsqueda que generó la trayectoria.
 
-<figure align="center">
+<div align="center">
     <img
     src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/dfce2fe3-9b0c-4aae-83ba-59ca5b6d9065"
     alt="RRT algorithm"
     width="60%" />
-    <figcaption><b>Figura 8:</b> Solución RRT</figcaption>
-</figure>  
+    <p><b>Figura 8:</b> Solución RRT</p>
+</div>  
 
 ## Simulación en *MATLAB* y *CoppeliaSim*
 <!--
