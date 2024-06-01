@@ -11,9 +11,7 @@ vehicleDims = vehicleDimensions(0.731 , 0.614, 0.720, "FrontOverhang",0.131,"Rea
 
 ccConfig = inflationCollisionChecker(vehicleDims);
 costmap.CollisionChecker = ccConfig;
-%%
-
-
+%% show Occupancy Map
 figure
 plot(ccConfig)
 title('Vehicle characteristics')
@@ -23,10 +21,7 @@ plot(costmap)
 title('Collision Checking with One Circle')
 
 
-
-
 %% PRM
-
 start = [1.2, 0.5];  
 goal = [17,16]; 
 map = binaryOccupancyMap(sm4b,Resolution=3); 
@@ -43,10 +38,12 @@ PRM = mobileRobotPRM(map)
 PRM.NumNodes = 200;
 PRM.ConnectionDistance = 7;
 
-PRM.findpath(start,goal)
+path = PRM.findpath(start,goal)
 
 figure 
 PRM.show()
+csvwrite("path.csv",path)
+
 %% RRT
 
 startPose = [1.2, 0.5, 90];   % [meters, meters, degrees]
@@ -62,12 +59,10 @@ planner.MaxIterations= 80000;
 pathFound = ~isempty(refPath.PathSegments)
 
 if (pathFound) 
-   
-        
-    %,ConnectionDistance=0.5,MinTurningRadius=0.4
-    
     plot(planner,'Tree','on')
     
 end
 
-%pos = refPath.PathSegments.MotionLengths
+%% Control position 
+controller = controllerPurePursuit
+
