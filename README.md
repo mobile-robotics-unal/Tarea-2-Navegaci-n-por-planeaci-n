@@ -55,7 +55,7 @@ setOccupancy(myMap,[1,1],sm4b,'grid')
 show(myMap)
 ```
 
-Al ejecutar este código junto con la sección anterior de código, se obtiene el mapa preliminar.
+Al ejecutar este código junto con la sección anterior de código, se obtiene el mapa base.
 
 <div  align="center">
     <img
@@ -65,8 +65,18 @@ Al ejecutar este código junto con la sección anterior de código, se obtiene e
     <p> <b>Figure 2: </b>Mapa base </p>
 </div> 
 
-Luego, de acuerdo a las dimensiones del robot, agranda cada posición con un 1 lógico (ocupada) por el radio indicado en metros...
+Sabiendo las dimensiones del robot se encuentra el radio mínimo que lo encierra siendo este la diagonal del robot, Con este radio se realiza la inflación del mapa obteniendo el siguiente mapa inflado: 
 
+```matlab
+
+
+
+<div  align="center"">
+    <img
+    src="https://github.com/mobile-robotics-unal/Tarea-2-Navegaci-n-por-planeaci-n/assets/25491198/9c436187-75d1-43bc-9a89-71e01e055841"
+    width="60%" />
+    <p> <b>Figure 3:</b> Mapa inflado </p>
+</div> 
 
 
 <div  align="center"">
@@ -131,7 +141,15 @@ title('Collision Checking with One Circle')
     <p> <b> Figure 5: </b> Mapa inflado </p>
 </div>
 
+Para la planeación de trayectoria se define una posición inicial en la esquina inferior derecha (1.2, 0.5) y posición final (17,16).
+
 ## Planeación PRM
+Para la ejecución del algoritmo PRM (Probabilistic Road Map ) se crea un objeto `mobileRobotPRM`. El planner tiene unos valores por defecto que no son los adecuados para el robot, por lo que se deben modificar.
+
+```matlab 
+
+
+```
 
 ## Planeación RRT
 
@@ -141,10 +159,6 @@ Para la ejecución del algoritmo RRT (optimal rapidly exploring random tree) se 
 ```matlab
 startPose = [1.2, 0.5, 90];   % [meters, meters, degrees]
 goalPose = [17,16, 0]; 
-
-
-
-
 
 planner = pathPlannerRRT(costmap)
 planner.ConnectionDistance = 4;
@@ -195,6 +209,6 @@ Se obtine como resultado una trayectoria que se muestra en la siguiente imagen. 
 ## Simulasión en *MATLAB* y *CoppeliaSim*
 
 ## Referencias
-1. [doc inflationCollisionChecker](https://la.mathworks.com/help/driving/ref/driving.costmap.inflationcollisionchecker.html)
+1. [documentación inflationCollisionChecker](https://la.mathworks.com/help/driving/ref/driving.costmap.inflationcollisionchecker.html)
 2. [localization and kalman filters](https://la.mathworks.com/matlabcentral/fileexchange/109485-lessons-on-mobile-robot-localization-and-kalman-filters?s_tid=prof_contriblnk)
-
+3. [documentación vehicleCostmap](https://la.mathworks.com/help/robotics/ug/probabilistic-roadmaps-prm.html)

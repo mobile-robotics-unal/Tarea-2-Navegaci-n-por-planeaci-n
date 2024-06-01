@@ -27,14 +27,30 @@ title('Collision Checking with One Circle')
 
 %% PRM
 
+start = [1.2, 0.5];  
+goal = [17,16]; 
+map = binaryOccupancyMap(sm4b,Resolution=3); 
+radius =sqrt((0.731/2)^2 + (0.614/2)^2)     %radios:= diagonal of the vehicle
+inflatedMap = map
+inflate(inflatedMap,0.6)
 
+figure 
+show(map)
+
+show(inflatedMap)
+
+PRM = mobileRobotPRM(map)
+PRM.NumNodes = 200;
+PRM.ConnectionDistance = 7;
+
+PRM.findpath(start,goal)
+
+figure 
+PRM.show()
 %% RRT
+
 startPose = [1.2, 0.5, 90];   % [meters, meters, degrees]
 goalPose = [17,16, 0]; 
-
-
-
-
 
 planner = pathPlannerRRT(costmap)
 planner.ConnectionDistance = 4;
@@ -54,4 +70,4 @@ if (pathFound)
     
 end
 
-
+%pos = refPath.PathSegments.MotionLengths
