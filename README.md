@@ -65,9 +65,7 @@ Al ejecutar este código junto con la sección anterior de código, se obtiene e
     <p> <b>Figure 2: </b>Mapa base </p>
 </div> 
 
-Luego, de acuerdo a las dimensiones del robot, agranda cada posición con un 1 lógico (ocupada) por el radio indicado en metros...
-
-
+Luego, de acuerdo a las dimensiones del robot, se expanden las paredes del mapa.
 
 <div  align="center"">
     <img
@@ -192,7 +190,7 @@ Se obtine como resultado una trayectoria que se muestra en la siguiente imagen. 
     <p><b>Figure 6:</b> Solucción RRT   </p>
 </div>  
 
-## Simulasión en *MATLAB* y *CoppeliaSim*
+## Simulación en *MATLAB* y *CoppeliaSim*
 
 ## Referencias
 1. [doc inflationCollisionChecker](https://la.mathworks.com/help/driving/ref/driving.costmap.inflationcollisionchecker.html)
